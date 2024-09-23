@@ -1,0 +1,100 @@
+/* Apply the fonts */
+body {
+    font-family: "Roboto", sans-serif; /* Use Roboto for body text */
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  h1,
+  .navbar-brand {
+    font-family: "Poppins", sans-serif; /* Use Poppins for headers and navbar */
+    font-weight: 600;
+  }
+
+  /* Navbar */
+  .navbar {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar-brand {
+    font-size: 1.75rem;
+    letter-spacing: 1px;
+  }
+
+  /* Main Heading */
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+  }
+
+  /* College Cards */
+  .college-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .college-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  .btn-primary {
+    background-color: #ff6f61;
+    border: none;
+    font-size: 1.25rem;
+    padding: 10px 20px;
+    border-radius: 10px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    font-family: "Poppins", sans-serif; /* Use Poppins for button text */
+    font-weight: 400;
+  }
+
+  .btn-primary:hover {
+    background-color: #ff3d3d;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Pagination */
+  .pagination .page-link {
+    background-color: #f5a623;
+    border: none;
+    color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+    font-family: "Poppins", sans-serif; /* Use Poppins for pagination */
+    font-weight: 400;
+  }
+
+  .pagination .page-link:hover {
+    background-color: #ffcc80;  /* Light orange on hover */
+    color: #333;
+  }
+
+  .pagination .page-item.active .page-link {
+    background-color: #ff6f61; /* Vivid red-orange for the active page */
+    border-color: #ff6f61;
+  }
+
+  /* Footer */
+  footer {
+    background-color: #1f1f1f;
+    padding: 20px;
+    color: #fff;
+    text-align: center;
+    margin-top: auto;
+    box-shadow: 0px -4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Responsive Styling */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+  }

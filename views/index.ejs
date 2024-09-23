@@ -3,42 +3,265 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LeetCode User Data Fetch</title>
+    <title>Select Your College</title>
 
-    <link rel="stylesheet" href="./style.css" />
+    <!-- Google Fonts: Poppins & Roboto -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome CDN for Icons -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Background image */
+      body {
+        font-family: "Roboto", sans-serif;
+        background: url("https://www.transparenttextures.com/patterns/dark-fabric2.png"),
+          linear-gradient(135deg, #232526, #414345);
+        background-size: cover;
+        color: #fff;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      h1,
+      .navbar-brand {
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+      }
+
+      /* Navbar */
+      .navbar {
+        background-color: rgba(0, 0, 0, 0.8);
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+        transition: background-color 0.3s ease-in-out;
+      }
+
+      .navbar-brand {
+        font-size: 1.75rem;
+        letter-spacing: 1px;
+        color: #ff6f61;
+      }
+
+      .nav-link {
+        color: #f0f0f0; /* Default link color */
+        transition: color 0.3s;
+      }
+
+      .nav-link:hover,
+      .nav-link:focus,
+      .nav-link:active {
+        color: #ff6f61 !important; /* Hover, focus, and active link color */
+        font-weight: bold;
+      }
+
+      .nav-link.active {
+        color: #ff6f61 !important; /* Vivid red-orange for active link */
+        font-weight: bold;
+        border-bottom: 2px solid #ff6f61; /* Optional underline for active link */
+      }
+
+      .nav-link:visited {
+        color: #f0f0f0; /* Ensure visited links keep their color */
+      }
+
+      /* Main Heading */
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 600;
+        margin-bottom: 30px;
+        text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      /* College Cards */
+      .college-card {
+        background-color: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(5px);
+        border-radius: 15px;
+        padding: 20px;
+        transition: transform 0.3s, box-shadow 0.3s;
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+        color: #fff;
+        position: relative;
+      }
+
+      .college-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Icons for cards */
+      .college-card::before {
+        content: "\f19c"; /* Font Awesome university icon */
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        position: absolute;
+        top: -20px;
+        right: 15px;
+        font-size: 3rem;
+        color: rgba(255, 255, 255, 0.1);
+      }
+
+      /* Button */
+      .btn-primary {
+        background-color: #ff6f61;
+        border: none;
+        font-size: 1.25rem;
+        padding: 10px 20px;
+        border-radius: 10px;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+      }
+
+      .btn-primary:hover {
+        background-color: #ff3d3d;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Pagination */
+      .pagination .page-link {
+        background-color: #333;
+        border: none;
+        color: #fff;
+        transition: background-color 0.3s, color 0.3s;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .pagination .page-link:hover {
+        background-color: #555;
+        color: #ff6f61;
+      }
+
+      .pagination .page-item.active .page-link {
+        background-color: #ff6f61;
+        border-color: #ff6f61;
+        color: #fff;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #181818;
+        padding: 20px;
+        color: #fff;
+        text-align: center;
+        margin-top: auto;
+        box-shadow: 0px -4px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Responsive Styling */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2rem;
+        }
+      }
+    </style>
   </head>
   <body>
-    <!-- <h1>LeetCode User Data</h1>
-
-    <div>
-      <label for="username">Enter LeetCode Username:</label>
-      <input type="text" id="username" placeholder="e.g., ganesh_jaggu" />
-      <button onclick="displayUserInfo()">Get User Info</button>
-    </div>
-
-    <div id="user-info" style="margin-top: 20px">
-      
-    </div> -->
-
-    <h1 style="text-align: center">Select Your College</h1>
-
-    <div class="colleges" style="text-align: center">
-      <% colleges.forEach(college => { %>
-      <div class="college-item">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg py-3">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <i class="fas fa-graduation-cap"></i> College Explorer
+        </a>
         <button
-          style="
-            color: rgb(255, 0, 13);
-            width: 50%;
-            font-size: larger;
-            margin: 10px;
-          "
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
-          <%= college %>
+          <span class="navbar-toggler-icon"></span>
         </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#"
+                ><i class="fas fa-home"></i> Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"
+                ><i class="fas fa-info-circle"></i> About</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"
+                ><i class="fas fa-envelope"></i> Contact</a
+              >
+            </li>
+          </ul>
+        </div>
       </div>
-      <% }) %>
+    </nav>
+
+    <!-- Main Section -->
+    <div class="container mt-5 text-center">
+      <h1>Select Your College</h1>
+
+      <!-- College List (Grid system) -->
+      <div class="row row-cols-1 row-cols-md-2 g-4">
+        <% let counter = 0 %> <% colleges.forEach(college => { %>
+        <div class="col">
+          <div class="college-card p-4">
+            <form action="/students" method="post">
+              <input type="hidden" name="college" value="<%= counter %>" />
+              <button type="submit" class="btn btn-primary w-100">
+                <%= college %> <i class="fas fa-arrow-right"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+        <% counter++; %> <% }) %>
+      </div>
+
+      <!-- Pagination -->
+      <div class="d-flex justify-content-center mt-4">
+        <nav aria-label="Page navigation">
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
 
-    <script src="./script.js"></script>
+    <!-- Footer -->
+    <footer>
+      <p>
+        <i class="fas fa-copyright"></i> 2024 College Explorer | All rights
+        reserved.
+      </p>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
