@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <h1>LeetCode User Data</h1>
+    <!-- <h1>LeetCode User Data</h1>
 
     <div>
       <label for="username">Enter LeetCode Username:</label>
@@ -17,8 +17,28 @@
     </div>
 
     <div id="user-info" style="margin-top: 20px">
-      <!-- User data will be displayed here -->
+      
+    </div> -->
+
+    <h1 style="text-align: center">Select Your College</h1>
+
+    <div class="colleges" style="text-align: center">
+      <% colleges.forEach(college => { %>
+      <div class="college-item">
+        <button
+          style="
+            color: rgb(255, 0, 13);
+            width: 50%;
+            font-size: larger;
+            margin: 10px;
+          "
+        >
+          <%= college %>
+        </button>
+      </div>
+      <% }) %>
     </div>
+
     <script src="./script.js"></script>
   </body>
 </html>
