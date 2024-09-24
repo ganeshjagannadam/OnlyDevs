@@ -57,6 +57,10 @@
         color: #ff6f61;
       }
 
+      .navbar-brand:hover {
+        color: #f74232;
+      }
+
       .nav-link {
         color: #f0f0f0; /* Default link color */
         transition: color 0.3s;
@@ -72,7 +76,7 @@
       .nav-link.active {
         color: #ff6f61 !important; /* Vivid red-orange for active link */
         font-weight: bold;
-        border-bottom: 2px solid #ff6f61; /* Optional underline for active link */
+        border-bottom: 2px solid #ff6f61;
       }
 
       .nav-link:visited {
@@ -92,7 +96,7 @@
         background-color: rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(5px);
         border-radius: 15px;
-        padding: 20px;
+        padding: 15px;
         transition: transform 0.3s, box-shadow 0.3s;
         box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
         color: #fff;
@@ -100,8 +104,8 @@
       }
 
       .college-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.5);
+        transform: scale(1.05); /* Slightly increase the size */
+        box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.5); /* Keep the shadow for depth */
       }
 
       /* Icons for cards */
@@ -114,6 +118,15 @@
         right: 15px;
         font-size: 3rem;
         color: rgba(255, 255, 255, 0.1);
+      }
+
+      .college-icon {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+        border-radius: 50%;
+        object-fit: cover;
+        vertical-align: middle;
       }
 
       /* Button */
@@ -219,11 +232,16 @@
       <div class="row row-cols-1 row-cols-md-2 g-4">
         <% let counter = 0 %> <% colleges.forEach(college => { %>
         <div class="col">
-          <div class="college-card p-4">
+          <div class="college-card">
             <form action="/students" method="post">
               <input type="hidden" name="college" value="<%= counter %>" />
               <button type="submit" class="btn btn-primary w-100">
-                <%= college %> <i class="fas fa-arrow-right"></i>
+                <img
+                  src="<%= college.image %>"
+                  alt="<%= college.name %> Logo"
+                  class="college-icon"
+                />
+                <%= college.name %> <i class="fas fa-arrow-right"></i>
               </button>
             </form>
           </div>

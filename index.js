@@ -18,11 +18,12 @@ app.get('/favicon.ico', (req, res) => res.status(204).end());
 
 
 const colleges = [
-    "JNTUA College of Engineering, Ananthapuramu",
-    "JNTUA College of Engineering Pulivendula",
-    "Sree Vidyanikethan Engineering College - [SVEC],Tirupati",
-    "Sri Venkateswara University, Tirupati",
-    "G.Pulla Reddy Engineering College, Kurnool"
+    {name : "JNTUA College of Engineering, Ananthapuramu", image: "/images/logo.png"},
+    {name : "JNTUA College of Engineering Pulivendula", image: "/images/logo.png"},
+    {name : "Sree Vidyanikethan Engineering College - [SVEC],Tirupati", image: "/images/logo.png"},
+    {name : "Sri Venkateswara University, Tirupati", image: "/images/logo.png"},
+    {name : "G.Pulla Reddy Engineering College, Kurnool", image: "/images/logo.png"},
+    {name : "JNTUA College of Engineering Kalikiri", image: "/images/logo.png"}
 ]
 
 const students = [
@@ -30,7 +31,8 @@ const students = [
     ["21","22","23"],
     ["31","32","33"],
     ["41","42","43"],
-    ["51","52","53"]
+    ["51","52","53"],
+    ["61","62","63"]
 ]
 
 // app.use('/', (req, res) => {
