@@ -15,26 +15,74 @@
     <style>
       body {
         background-color: #f8f9fa;
+        font-family: Arial, sans-serif;
+      }
+      .user-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px; /* Increased margin for spacing */
+      }
+      .index-box {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #007bff;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        margin-right: 15px;
+        box-shadow: 0 2px 5px rgba(0, 123, 255, 0.5); /* Added shadow for effect */
       }
       .user-card {
+        flex-grow: 1; /* Make user card take the full width */
         border: 1px solid #ccc;
         border-radius: 10px;
-        padding: 15px;
-        margin-bottom: 10px;
-        background-color: #fff;
+        padding: 20px;
+        background-color: #ffffff;
+        transition: transform 0.3s;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Added shadow for depth */
+      }
+      .user-card:hover {
+        transform: translateY(-3px); /* Subtle lift on hover */
+      }
+      .avatar {
+        width: 80px; /* Increased avatar size */
+        height: 80px; /* Increased avatar size */
+        border-radius: 50%;
+        margin-right: 20px; /* Increased margin for spacing */
+        object-fit: cover;
+        border: 2px solid #007bff; /* Added border for the avatar */
+      }
+      .user-info {
+        flex-grow: 1; /* Allow user info to grow */
+      }
+      h5 {
+        margin-bottom: 10px; /* Added space below the username */
+      }
+      p {
+        margin: 5px 0; /* Adjusted spacing for paragraphs */
       }
     </style>
   </head>
   <body>
     <div class="container mt-5">
-      <h1>Students</h1>
-      <% users.forEach(user => { %>
-      <div class="user-card">
-        <h5><%= user.username %></h5>
-        <p>Real Name: <%= user.profile.realName %></p>
-        <p>About: <%= user.profile.aboutMe || 'No information provided' %></p>
-        <p>Reputation: <%= user.profile.reputation %></p>
-        <p>Rank: <%= user.profile.ranking %></p>
+      <h1 class="text-center mb-4">Students</h1> <!-- Centered title -->
+      <% users.forEach((user, index) => { %>
+      <div class="user-container">
+        <div class="index-box"><%= index + 1 %></div>
+        <div class="user-card">
+          <img src="<%= user.profile.userAvatar || 'default-avatar.png' %>" alt="<%= user.username %>" class="avatar" />
+          <div class="user-info">
+            <h5><%= user.username %></h5>
+            <p><strong>Real Name:</strong> <%= user.profile.realName %></p>
+            <p><strong>About:</strong> <%= user.profile.aboutMe || 'No information provided' %></p>
+            <p><strong>Reputation:</strong> <%= user.profile.reputation %></p>
+          </div>
+        </div>
       </div>
       <% }) %>
     </div>
